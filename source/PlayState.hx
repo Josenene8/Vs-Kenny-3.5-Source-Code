@@ -6,17 +6,12 @@ import Discord.DiscordClient;
 import openfl.Lib;
 import Section.SwagSection;
 import Song.SwagSong;
-#if cpp
-import webm.WebmPlayer;
-#end
+
 import WiggleEffect.WiggleEffectType;
 import flixel.FlxBasic;
 import flixel.FlxCamera;
 import flixel.FlxG;
-import webm.WebmIo;
-import webm.WebmIoFile;
-import webm.WebmPlayer;
-import webm.WebmEvent;
+
 import flixel.FlxGame;
 import flixel.FlxObject;
 import flixel.FlxSprite;
