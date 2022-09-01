@@ -31,7 +31,7 @@ class MP4Handler
 
 	public function playMP4(path:String, voidCallback:Void->Void, ?outputTo:FlxSprite = null, ?repeat:Bool = false, ?isWindow:Bool = false, ?isFullscreen:Bool = false):Void
 	{
-		#if html5
+		#if windows
 		FlxG.autoPause = false;
 
 		if (FlxG.sound.music != null)
