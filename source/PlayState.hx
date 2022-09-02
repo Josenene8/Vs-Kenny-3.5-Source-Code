@@ -178,9 +178,9 @@ class PlayState extends MusicBeatState
 	var halloweenWhite:BGSprite;
 	var estruendo:Bool = false;
 
-	var snowfallWebmPlayer;
+	var snowfall:FlxSprite;
 	var snowfallSpr:FlxSprite;
-	var snowfallVid:WebmIo;
+	var snowfallVid:FlxSprite;
 
 	var phillyCityLights:FlxTypedGroup<BGSprite>;
 	var phillyTrain:BGSprite;
