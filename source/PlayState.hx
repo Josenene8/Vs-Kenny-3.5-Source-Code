@@ -179,10 +179,10 @@ class PlayState extends MusicBeatState
 	var estruendo:Bool = false;
 
 	var snowfall:FlxSprite;
-	#if desktop 
+ 
 	var snowfallSpr:FlxSprite;
 	var snowfallVid:FlxSprite;
-        #end
+        
 	var phillyCityLights:FlxTypedGroup<BGSprite>;
 	var phillyTrain:BGSprite;
 	var blammedLightsBlack:ModchartSprite;
