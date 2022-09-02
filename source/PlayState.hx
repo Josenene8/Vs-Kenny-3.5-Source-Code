@@ -5781,13 +5781,9 @@ class PlayState extends MusicBeatState
 	/*
 	* Used for looping the snowfall video.
 	*/
-        #if desktop
+        
 	function loopSnowfall(str:String)
 	{
-		snowfall = new WebmPlayer();
-		snowfall.fuck(snowfallVid, false);
-		snowfallSpr.loadGraphic(snowfall.bitmapData);
-		snowfall.play();
+		
 	}
 }
-#end
