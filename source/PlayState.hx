@@ -179,9 +179,10 @@ class PlayState extends MusicBeatState
 	var estruendo:Bool = false;
 
 	var snowfall:FlxSprite;
+	#if desktop 
 	var snowfallSpr:FlxSprite;
 	var snowfallVid:FlxSprite;
-
+        #end
 	var phillyCityLights:FlxTypedGroup<BGSprite>;
 	var phillyTrain:BGSprite;
 	var blammedLightsBlack:ModchartSprite;
@@ -1111,8 +1112,10 @@ class PlayState extends MusicBeatState
 			
 		}
 
+		#if desktop 
 		if (FlxG.save.data.snow)	//this code is from vs Ace. PD: don't use the same video.
 		{
+		
 			switch(SONG.song)
 			{
 				case 'hot-dog':
@@ -1135,7 +1138,8 @@ class PlayState extends MusicBeatState
 			snowfall.play();
 			snowfall.addEventListener(WebmEvent.STOP, loopSnowfall);
 		}
-
+                #end
+  
 		#if LUA_ALLOWED
 		luaDebugGroup = new FlxTypedGroup<DebugLuaText>();
 		luaDebugGroup.cameras = [camOther];
@@ -2936,6 +2940,8 @@ class PlayState extends MusicBeatState
 			}
 		}
 
+		
+		#if desktop 	
 		if (FlxG.keys.justPressed.SEVEN && !endingSong && !inCutscene)
 		{
 			if (snowfall != null)
@@ -2954,7 +2960,8 @@ class PlayState extends MusicBeatState
 			DiscordClient.changePresence("Chart Editor", null, null, true);
 			#end
 		}
-
+                #end
+			
 		// FlxG.watch.addQuick('VOL', vocals.amplitudeLeft);
 		// FlxG.watch.addQuick('VOLRight', vocals.amplitudeRight);
 
@@ -4087,12 +4094,14 @@ class PlayState extends MusicBeatState
 					Highscore.saveWeekScore(WeekData.getWeekFileName(), campaignScore, storyDifficulty);
 				}
 
+				#if desktop 
 				if (snowfall != null)
 				{
 					snowfall.removeEventListener(WebmEvent.STOP, loopSnowfall);
 					snowfall.stop();
 				}
-
+                                #end
+					
 				FlxG.save.data.weekCompleted = StoryMenuState.weekCompleted;
 				FlxG.save.flush();
 				usedPractice = false;
@@ -4127,12 +4136,13 @@ class PlayState extends MusicBeatState
 				PlayState.SONG = Song.loadFromJson(PlayState.storyPlaylist[0] + difficulty, PlayState.storyPlaylist[0]);
 				FlxG.sound.music.stop();
 
+				#if desktop
 				if (snowfall != null)
 				{
 					snowfall.removeEventListener(WebmEvent.STOP, loopSnowfall);
 					snowfall.stop();
 				}
-
+                                #end
 				if(winterHorrorlandNext) {
 					new FlxTimer().start(1.5, function(tmr:FlxTimer) {
 						cancelFadeTween();
@@ -4148,13 +4158,15 @@ class PlayState extends MusicBeatState
 		{
 			trace('WENT BACK TO FREEPLAY??');
 			cancelFadeTween();
-
+			
+                        #if desktop
 			if (snowfall != null)
 			{
 				snowfall.removeEventListener(WebmEvent.STOP, loopSnowfall);
 				snowfall.stop();
 			}
-
+                        #end
+				
 			MusicBeatState.switchState(new FreeplayState());
 			FlxG.sound.playMusic(Paths.music('freakyMenu'));
 			usedPractice = false;
@@ -5769,6 +5781,7 @@ class PlayState extends MusicBeatState
 	/*
 	* Used for looping the snowfall video.
 	*/
+        #if desktop
 	function loopSnowfall(str:String)
 	{
 		snowfall = new WebmPlayer();
@@ -5777,3 +5790,4 @@ class PlayState extends MusicBeatState
 		snowfall.play();
 	}
 }
+#end
