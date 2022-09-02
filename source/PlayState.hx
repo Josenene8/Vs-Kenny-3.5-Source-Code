@@ -2475,8 +2475,10 @@ class PlayState extends MusicBeatState
 	{
 		if (paused)
 		{
+			#if desktop 
 			if (snowfall != null)
 				snowfall.changePlaying(false);
+			#end
 
 			if (FlxG.sound.music != null)
 			{
@@ -2803,7 +2805,7 @@ class PlayState extends MusicBeatState
 					FlxG.camera.flash(FlxColor.WHITE, 2);
 			}
 		}
-		#end
+		
 		if (curSong == 'burger' && curStep != stepOfLast)
 		{
 			switch (curStep)
@@ -2812,7 +2814,7 @@ class PlayState extends MusicBeatState
 					snowfall.changePlaying(true);
 			}
 		}
-
+                #end
 		if (curSong == 'pizza' && curStep != stepOfLast)
 		{
 			switch (curStep)
