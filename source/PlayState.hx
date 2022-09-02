@@ -1465,8 +1465,10 @@ class PlayState extends MusicBeatState
 			botplayTxt.y = timeBarBG.y - 78;
 		}
 
+                #if desktop
 		if (FlxG.save.data.snow && curSong == 'hot-dog')
 		{
+			
 			add(snowfallSpr);
 			snowfallSpr.cameras = [camHUD];
 			snowfall.changePlaying(false);
@@ -1485,7 +1487,8 @@ class PlayState extends MusicBeatState
 			snowfallSpr.cameras = [camHUD];
 			snowfall.changePlaying(false);
 		}
-
+                #end
+  
 		if (FlxG.save.data.rain && curSong == 'pizza')
 		{
 			add(lluvia);
@@ -2513,8 +2516,10 @@ class PlayState extends MusicBeatState
 	{
 		if (paused)
 		{
+			#if desktop
 			if (snowfall != null)
 				snowfall.changePlaying(true);
+			#end
 
 			if (FlxG.sound.music != null && !startingSong)
 			{
@@ -2772,7 +2777,7 @@ class PlayState extends MusicBeatState
 					FlxG.camera.flash(FlxColor.WHITE, 2);
 			}
 		}
-		
+		#if desktop
 		if (curSong == 'hot-dog' && curStep != stepOfLast)
 		{
 			switch (curStep)
@@ -2798,7 +2803,7 @@ class PlayState extends MusicBeatState
 					FlxG.camera.flash(FlxColor.WHITE, 2);
 			}
 		}
-		
+		#end
 		if (curSong == 'burger' && curStep != stepOfLast)
 		{
 			switch (curStep)
